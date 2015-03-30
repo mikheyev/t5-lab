@@ -6,6 +6,8 @@ The raw reads are in compressed [fastq format](http://en.wikipedia.org/wiki/FAST
 
 ## Aligning reads using bowtie2
 
+We take data from [Jeong *et al* 2009](http://www.ncbi.nlm.nih.gov/pubmed/19786035), who sequenced a couple of *E. coli* B strains.
+
 ```
 bowtie2-build ../ref/NC_012967.fasta ../ref/NC_012967
 ```
