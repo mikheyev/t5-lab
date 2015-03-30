@@ -51,12 +51,13 @@ vcftools --vcf ../data/var/raw.vcf --minQ 20 --non-ref-ac 1 --max-non-ref-ac 4  
 ### Loading all of the data
 
 - We can view the results of our analysis in IGV by running ```igv``` from the command line
-- Use *Genomes... Load genome from file* to load ```ref/NC_012967.genome```
+- Use *Genomes... Load genome from file* to load ```ref/NC_012967.fasta```
+- The load the annotation usnig *File... Load from file*  ```ref/NC_012967.gff```
 - Then load all of the bam files from ```data/alignments``` and the filtered vcf file ```data/var/filtered.recode.vcf```
 
 ### Data intepretation
 
-The T5 receptor is called ECB_RS00780 in this assembly you can type this into the IGV location window to zoom to the region of particular interest.
+The T5 receptor is called [**fhuA**](https://www.wikigenes.org/e/gene/e/944856.html) and you can type this into the IGV location window to zoom to the region of particular interest.
 
 
 #### In class exercises
