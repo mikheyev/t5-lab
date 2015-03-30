@@ -1,6 +1,6 @@
 # Identifying resistant mutants
 
-For this exercise, we'll use the bowtie2 aligner, and the freebaes  variant calling. There are quite a range of tools for both jobs, and it might be interesting to give them a try. We will use VCFTools to filter the results. The short pipeline below can be easily modified for use with other packages.
+For this exercise, we'll use the bowtie2 aligner, and the FreeBayes variant calling package. There are quite a range of tools for both jobs, and it might be interesting to give them a try. We will use VCFTools to filter the results. The short pipeline below can be easily modified for use with other packages.
 
 The raw reads are in compressed [fastq format](http://en.wikipedia.org/wiki/FASTQ_format). Basically it contains the DNA sequence and a measure of how confident the sequencer is in each of the base calls.
 
@@ -12,7 +12,9 @@ bowtie2-build ../ref/NC_012967.fasta ../ref/NC_012967
 
 This creates a lookup index that for the aligner.
 
-Now we can map the reads. I actually don't recommend doing this, since it takes more than half an hour. Instead the results have been pre-computed for you in ```../data/alignments/*bam```. However, if you do want to run your own computations, run  ```./map.sh``` This script maps the reads, adds read groups (a kind of ID), sorts the output by chromosomal position and creates an index. It uses several programs to do this, piping the ouput from one to the other.
+Now we can map the reads. I actually don't recommend doing this, since it takes more than half an hour. Instead the results have been pre-computed for you in ```../data/alignments/*bam```. 
+
+However, if you do want to run your own computations, run  ```./map.sh``` This script maps the reads, adds read groups (a kind of ID), sorts the output by chromosomal position and creates an index. It uses several programs to do this, piping the ouput from one to the other.
 
 
 
@@ -27,13 +29,13 @@ You see that there alignment files corresponding to every input file.
 
 ## Variant calling
 
-There we use FreeBayes on a list of bams produced by our previous analysis.
+There we use FreeBayes on a list of bams produced by our previous analysis. I also don't recommend running this command, as it takes a while to run. The output file ```../data/var/raw.vcf``` has been pre-computed.
 
 ```
 freebayes --ploidy 1 --fasta-reference ../ref/NC_012967.fasta --bam ../data/alignments/*bam -v ../data/var/raw.vcf
 ```
 
-The outcome of this analysis is in VCF format
+The outcome of this analysis is in [VCF format](http://samtools.github.io/hts-specs/VCFv4.2.pdf). It is designed to be human-readable, but just barely. At its core, it contains evidence for variability at sites throughout the genome (column 6), and what the genotype of each sample is at that site (columns 9 and onward). See sections 1.3 and 1.4 of the VCF format specifications for more information.
 
 ## Variant filtering
 
@@ -45,9 +47,16 @@ Remove low quality sites and anything where all the samples are different from t
 vcftools --vcf raw.vcf --minQ 20 --non-ref-ac 1 --max-non-ref-ac 4  --recode --out filtered
 ```
 
-## Visualizing results
+## Visualizing results in IGV
 
-We can view the results of our analysis in IGV.
+We can view the results of our analysis in IGV by running ```igv```
 
-## Exercises
 
+
+The T5 receptor is called ECB_RS00780 in this assembly
+
+## Questions
+
+## Programming exercises
+
+1. For 
