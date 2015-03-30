@@ -31,7 +31,7 @@ Or, if you installed the required software, on you computer.
 #### Cloning the git repository
 
 - Once the virtual machine is running, open the terminal and run ```git clone https://github.com/mikheyev/t5-lab.git```
-- You can then go to the ```t5-lab``` folder created by git.
+- You can then go to the folder created by git ```cd t5-lab```
 
 #### Download data 
 
@@ -45,7 +45,7 @@ The data are too big for git and need to be downloaded separately.
 	- Then ```sudo mount -t vboxsf data ~/share```
 		- This connects the folder on your computer to the VM.
 	- You can then go to the ```t5-lab``` folder and run ```tar -xzf ~/share/t5-data.tar.gz``` to decompress the data.
-- You should see two new folders called ```data``` and ```ref```
+- You should see a new folder called ```data```
 - The actual exercise is found in the [src](./src/) folder, so you can go there now and start the exercise.
 
 
