@@ -3,7 +3,6 @@
 #!processor NCBI annotwriter
 ##sequence-region NC_012967.1 1 4629812
 ##species http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=413997
-NC_012967	RefSeq	region	1	4629812	.	+	.	ID=id0;Dbxref=taxon:413997;Is_circular=true;gbkey=Src;genome=chromosome;mol_type=genomic DNA;strain=REL606
 NC_012967	RefSeq	gene	190	255	.	+	.	ID=gene0;Name=thrL;Dbxref=GeneID:8178299;gbkey=Gene;gene=thrL;locus_tag=ECB_00001
 NC_012967	RefSeq	CDS	190	255	.	+	0	ID=cds0;Name=YP_003043230.1;Parent=gene0;Note=similar to b0001;Dbxref=Genbank:YP_003043230.1,GeneID:8178299;gbkey=CDS;product=thr operon leader peptide;protein_id=YP_003043230.1;transl_table=11
 NC_012967	RefSeq	gene	336	2798	.	+	.	ID=gene1;Name=thrA;Dbxref=GeneID:8178300;gbkey=Gene;gene=thrA;locus_tag=ECB_00002
