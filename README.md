@@ -33,7 +33,7 @@ You can then install this repository, download the data there and unpack them:
 	# get data (very slow!)
 	wget http://ecoevo.unit.oist.jp/class/t5-lab/t5-data.tar
 	# unpack data and remove archive
-	tar -xf t5-data.tar && rm t5-data.tar
+	tar -xvf t5-data.tar && rm t5-data.tar
 
 ### Inside the virtual machine
 
