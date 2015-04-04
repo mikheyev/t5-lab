@@ -1,6 +1,6 @@
 # Identifying resistant mutants
 
-For this exercise, we'll use the bowtie2 aligner, and the FreeBayes variant calling package. We will use VCFTools to filter the results. The short pipeline below can be easily modified for use with other packages, of which ther are quite a range, and you are welcome to try some other ones for homework. 
+For this exercise, we'll use the bowtie2 aligner, and the FreeBayes variant calling package. We will use VCFTools to filter the results. The short pipeline below can be easily modified for use with other packages, of which ther are quite a range, and you are welcome to try some other ones for homework.
 
 The raw reads are in compressed [fastq format](http://en.wikipedia.org/wiki/FASTQ_format). Basically it contains the DNA sequence and a measure of how confident the sequencer is in each of the base calls.
 
@@ -27,6 +27,8 @@ bowtie2-build ../ref/NC_012967.fasta ../ref/NC_012967
 This creates a lookup index that for the aligner.
 
 Now we can map the reads. I actually don't recommend doing this, since it takes more than half an hour. Instead the results have been pre-computed for you in ```../data/alignments/*bam```. However, first, look inside ```map.sh``` and figure out what's going on.
+
+```map.sh``` makes extensive use of linux pipes, a way to pass seamlessly pass data between different programs. You should read about pipes [here](./pipes.md), before tackling the homework assignments.
 
 However, if you do want to run your own computations, run  ```./map.sh``` This script maps the reads, adds read groups (sample ID, and meta-data, such as sequencing platform, *etc.*), sorts the output by chromosomal position and creates an index. It uses several programs to do this, piping the output from one to the other.
 
@@ -73,7 +75,6 @@ vcftools --vcf ../data/var/raw.vcf --minQ 20 --non-ref-ac 1 --max-non-ref-ac 4  
 
 The T5 receptor is called [**fhuA**](https://www.wikigenes.org/e/gene/e/944856.html) and you can type this into the IGV location window to zoom to the region of particular interest.
 
-
 #### In class exercises
 
 1. Take a look at mutant #3. What is this mutation? What biological effect does it have?
@@ -89,5 +90,6 @@ The T5 receptor is called [**fhuA**](https://www.wikigenes.org/e/gene/e/944856.h
 
 1. If we didn't know where to look for mutations, say if we wanted to characterize a novel phage, we would have to look genome-wide. Parse the VCF to find out how many other mutations are specific to just one isolate.
 - The transposes can show some sequence specificity. Are there systematic coverage biases? To check this, you can see if there the reads start coordinates on average the same across different samples. Use the output of ```samtools view``` on the bam files to see if the start positions are correlated across samples. Check [SAM format specifications](https://samtools.github.io/hts-specs/SAMv1.pdf) for more details on the output. You will be looking at column 4, the start position.
+	- Make sure you pipe the output of ```samtools view [filename]``` somewhere, or terminate it in some way. Otherwise, it will print a line for every read in the data set, which will take a while. One way to print just a few lines is by [piping](./pipes.md) the output to a command called ```head```, *e.g.*, ```samtools view foo.bam |head -50``` will display the first 50 lines in the file.
 - What is the average depth of coverage per sequenced bacterial genome, i.e., what is that average number of time each base is sequenced?
 - Bonus: re-write the analysis pipeline to use another aligner and base caller (*e.g.*, the [Stamy](http://www.well.ox.ac.uk/project-stampy) and [Platypus](http://www.well.ox.ac.uk/platypus) combo). Re-run the data analysis and compare VCF files. Do you get the same result?
