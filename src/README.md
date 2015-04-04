@@ -71,7 +71,7 @@ vcftools --vcf ../data/var/raw.vcf --minQ 20 --non-ref-ac 1 --max-non-ref-ac 4  
 - The load the annotation usnig *File... Load from file*  ```ref/NC_012967.gff```
 - Then load all of the bam files from ```data/alignments``` and the filtered vcf file ```data/var/filtered.recode.vcf```
 
-### Data intepretation
+### Data interpretation
 
 The T5 receptor is called [**fhuA**](https://www.wikigenes.org/e/gene/e/944856.html) and you can type this into the IGV location window to zoom to the region of particular interest.
 
@@ -88,8 +88,8 @@ The T5 receptor is called [**fhuA**](https://www.wikigenes.org/e/gene/e/944856.h
 
 #### Programming exercises for next week
 
-1. If we didn't know where to look for mutations, say if we wanted to characterize a novel phage, we would have to look genome-wide. Parse the VCF to find out how many other mutations are specific to just one isolate.
+1. In this case, the biology of the T5 phage tells us that mutations are most likely in *fhuA*. What if we didn't know that? Say if we wanted to characterize a novel phage resistance mechanism, we would have to look genome-wide. This would be made more difficult by the possible presence of false positives -- spurious mutations that occur in just one isolate, but are not related to resistance. Parse the VCF to find out how many other mutations, not associated with *fhuA* are specific to just one isolate (these are false positives you would have to deal with without a candidate gene to look at).
 - The transposes can show some sequence specificity. Are there systematic coverage biases? To check this, you can see if there the reads start coordinates on average the same across different samples. Use the output of ```samtools view``` on the bam files to see if the start positions are correlated across samples. Check [SAM format specifications](https://samtools.github.io/hts-specs/SAMv1.pdf) for more details on the output. You will be looking at column 4, the start position.
-	- Make sure you pipe the output of ```samtools view [filename]``` somewhere, or terminate it in some way. Otherwise, it will print a line for every read in the data set, which will take a while. One way to print just a few lines is by [piping](./pipes.md) the output to a command called ```head```, *e.g.*, ```samtools view foo.bam |head -50``` will display the first 50 lines in the file.
+	- Make sure you pipe the output of ```samtools view [filename]``` somewhere, or terminate it in some way. Otherwise, it will print a line for every read in the data set, which will take a while. One way to print just a few lines is by [piping](./pipes.md) the output to a command called ```head```, *e.g.*, ```samtools view foo.bam |head -50``` will display the first 50 lines in the file. You will most likely want to redirect samtools view to a file and parse that.
 - What is the average depth of coverage per sequenced bacterial genome, i.e., what is that average number of time each base is sequenced?
 - Bonus: re-write the analysis pipeline to use another aligner and base caller (*e.g.*, the [Stamy](http://www.well.ox.ac.uk/project-stampy) and [Platypus](http://www.well.ox.ac.uk/platypus) combo). Re-run the data analysis and compare VCF files. Do you get the same result?
