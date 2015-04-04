@@ -1,6 +1,6 @@
 # Identifying resistant mutants
 
-For this exercise, we'll use the bowtie2 aligner, and the FreeBayes variant calling package. We will use VCFTools to filter the results. The short pipeline below can be easily modified for use with other packages, of which ther are quite a range, and you are welcome to try some other ones for homework.
+For this exercise, we'll use the [bowtie2](https://github.com/BenLangmead/bowtie2) aligner, and the [FreeBayes](https://github.com/ekg/freebayes) variant calling package. We will use [VCFTools](http://vcftools.sourceforge.net) to filter the results. The short pipeline below can be easily modified for use with other packages, of which ther are quite a range, and you are welcome to try some other ones for homework.
 
 The raw reads are in compressed [fastq format](http://en.wikipedia.org/wiki/FASTQ_format). Basically it contains the DNA sequence and a measure of how confident the sequencer is in each of the base calls.
 
@@ -28,11 +28,13 @@ This creates a lookup index that for the aligner.
 
 Now we can map the reads. I actually don't recommend doing this, since it takes more than half an hour. Instead the results have been pre-computed for you in ```../data/alignments/*bam```. However, first, look inside ```map.sh``` and figure out what's going on.
 
-```map.sh``` makes extensive use of linux pipes, a way to pass seamlessly pass data between different programs. You should read about pipes [here](./pipes.md), before tackling the homework assignments.
-
 However, if you do want to run your own computations, run  ```./map.sh``` This script maps the reads, adds read groups (sample ID, and meta-data, such as sequencing platform, *etc.*), sorts the output by chromosomal position and creates an index. It uses several programs to do this, piping the output from one to the other.
 
-Instead, let's take a look at the pre-computed files to see whether the alignments are any good. 
+#### Read about pipes!
+```map.sh``` makes extensive use of linux pipes, a way to pass seamlessly pass data between different programs. You should read about pipes [here](./pipes.md), before tackling the homework assignments.
+
+### Checking output
+Let's take a look at the pre-computed files to see whether the alignments are any good. 
 
 ```
 ls -lh ../data/reads/
