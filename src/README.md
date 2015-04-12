@@ -68,7 +68,7 @@ vcftools --vcf ../data/var/raw.vcf --minQ 20 --non-ref-ac 1 --max-non-ref-ac 4  
 
 ### Loading all of the data
 
-- We can view the results of our analysis in IGV by running ```igv``` from the command line
+- We can view the results of our analysis in IGV by running ```igv.sh``` from the command line
 - Use *Genomes... Load genome from file* to load ```ref/NC_012967.fasta```
 - The load the annotation usnig *File... Load from file*  ```ref/NC_012967.gff```
 - Then load all of the bam files from ```data/alignments``` and the filtered vcf file ```data/var/filtered.recode.vcf```

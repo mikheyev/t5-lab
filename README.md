@@ -80,5 +80,5 @@ The final directory structure should can be checked by running ```tree``` and sh
     └── map.sh
 ```
 
-The actual exercise is found in the [src](./src/) folder, so you can go there now and start the exercise.
+The actual exercise is found in the [src](./src/) folder, so you can go there (```cd ~/t5-lab/src/```) now and start the exercise.
 
