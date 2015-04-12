@@ -1,5 +1,6 @@
 ---
 title: Laboratory exercises
+layout: default
 ---
 
 hello
