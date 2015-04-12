@@ -1,9 +1,9 @@
 ---
 title: Laboratory exercises
-layout: default
+layout: architect
 ---
 
 hello
 =====
 
-**You are here!**
+Architect layout?
