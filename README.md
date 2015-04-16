@@ -4,5 +4,5 @@ This is a module designed to simultaneously teach laboratory and bioinformatic s
 
 - The [student laboratory manual](http://bit.ly/t5-lab-student) and [instructor laboratory manual](http://bit.ly/t5-lab-instructor) hosted hosted on Google Docs.
 - The [instructions for the bioinformatic analysis](https://github.com/mikheyev/t5-lab/blob/master/Bioinformatics.md) can be found on the main GitHub page.
-- The VirtualBox virtual machine and data for this teaching module will be available on DataDryad. They can be found now on the [Ecology and Evolution Unit server](http://ecoevo.unit.oist.jp/class/t5-lab/)
-	- Note, the VM already contains all of the data, so if you are downloading the VM, you don't need to download the data.
+- The VirtualBox virtual machine containing the data and software for this teaching module will be available on DataDryad. For the present, it can be dowloaded [here](https://dl.dropboxusercontent.com/u/5275622/T5-lab.ova). 
+	- The data folders (reads, alignments and variant calles) are also [separately](https://dl.dropboxusercontent.com/u/5275622/t5-data.tar)
